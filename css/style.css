@@ -15,12 +15,13 @@ body {
 }
 
 .check {
-  width: fit-content;
-  width: -moz-fit-content;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
   background-color: white;
   color: black;
-  padding: 40px 100px;
-  position: absolute;
+  padding: 40px;
+  position: fixed;
   top: 0;
   left: 50%;
   border-radius: 10px;
@@ -99,9 +100,9 @@ body {
   align-items: center;
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   #info {
-    width: 300px 
+    width: 300px;
   }
   .input input {
     width: 250px;
