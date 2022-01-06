@@ -13,14 +13,16 @@ let wind = document.querySelector(".wind");
 let disc = document.querySelector(".disc");
 let pre = document.querySelector(".pre");
 let feel = document.querySelector(".feel");
+let preload = document.querySelector(".preload");
+let loaded = false;
 
 btn.addEventListener("click", function () {
+  document.querySelector(".check").style.transform = "Translate(-50%, 0)";
+  var check = setTimeout(function() {
+    document.querySelector(".check").style.transform =
+      "Translate(-50%, -200%)";
+  }, 1000);
   navigator.geolocation.getCurrentPosition(function (position) {
-    document.querySelector(".check").style.transform = "Translate(-50%, 0)";
-    var check = setTimeout(function () {
-      document.querySelector(".check").style.transform =
-        "Translate(-50%, -200%)";
-    }, 1000);
     lat = position.coords.latitude;
     lon = position.coords.longitude;
     api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=dffd9bc7ee9892f604ce6132396a2e49&units=metric`;
@@ -63,10 +65,16 @@ function Content(data) {
   wind.innerHTML = `Wind Speed: ${(data.wind.speed * (18 / 5)).toFixed(1)}Km/h`;
   feel.innerHTML = `Feels Like: ${data.main.feels_like.toFixed(0)}°C`;
   search.value = "";
+  loaded = true;
+  if (loaded) {
+  preload.style.cssText = "display: none;";
+}
 }
 
-window.onload = function () {
-  document.querySelector("body").style.display = "flex";
-};
-
 getDataByCity("Cairo");
+
+window.addEventListener("load", function () {
+  if (loaded) {
+  preload.style.cssText = "display: none;";
+}
+});
