@@ -18,11 +18,11 @@ let loaded = false;
 
 btn.addEventListener("click", function () {
   document.querySelector(".check").style.transform = "Translate(-50%, 0)";
-  var check = setTimeout(function() {
-    document.querySelector(".check").style.transform =
-      "Translate(-50%, -200%)";
-  }, 1000);
   navigator.geolocation.getCurrentPosition(function (position) {
+    var check = setTimeout(function() {
+      document.querySelector(".check").style.transform =
+        "Translate(-50%, -200%)";
+    }, 1000);
     lat = position.coords.latitude;
     lon = position.coords.longitude;
     api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=dffd9bc7ee9892f604ce6132396a2e49&units=metric`;
