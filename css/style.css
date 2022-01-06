@@ -38,6 +38,7 @@ body {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  z-index: 500;
 }
 
 #info {
@@ -292,7 +293,7 @@ body {
 
 .time {
   position: absolute;
-  top: 125px;
+  top: 4%;
   left: 50%;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
@@ -326,7 +327,7 @@ body {
 
 @media (max-width: 500px) {
   .time {
-    top: 160px;
+    top: 9%;
   }
   .time h1 {
     font-size: 40px;
