@@ -19,7 +19,7 @@ let loaded = false;
 btn.addEventListener("click", function () {
   document.querySelector(".check").style.transform = "Translate(-50%, 0)";
   navigator.geolocation.getCurrentPosition(function (position) {
-    var check = setTimeout(function() {
+    var check = setTimeout(function () {
       document.querySelector(".check").style.transform =
         "Translate(-50%, -200%)";
     }, 1000);
@@ -67,14 +67,37 @@ function Content(data) {
   search.value = "";
   loaded = true;
   if (loaded) {
-  preload.style.cssText = "display: none;";
-}
+    preload.style.cssText = "display: none;";
+  }
 }
 
 getDataByCity("Cairo");
 
+let hours = document.querySelector(".hours");
+let minutes = document.querySelector(".min");
+let last = document.querySelector(".last");
+let h1 = document.querySelector(".time h1");
+
+let date;
+
+let time = setInterval(() => {
+  date = new Date().toLocaleTimeString();
+  if (date.length == 10) {
+    hours.innerHTML = `0${date.charAt(0)}`;
+    minutes.innerHTML = `${date.charAt(2)}${date.charAt(3)}`;
+    last.innerHTML = `${date.charAt(8)}${date.charAt(9)}`;
+  } else if (date.length > 10) {
+    hours.innerHTML = `${date.charAt(0)}${date.charAt(1)}`;
+    minutes.innerHTML = `${date.charAt(3)}${date.charAt(4)}`;
+    last.innerHTML = `${date.charAt(9)}${date.charAt(10)}`;
+  } else {
+    h1.innerHTML = "Sorry, Can't Get Current Time";
+    clearInterval(time);
+  }
+}, 1000);
+
 window.addEventListener("load", function () {
   if (loaded) {
-  preload.style.cssText = "display: none;";
-}
+    preload.style.cssText = "display: none;";
+  }
 });
