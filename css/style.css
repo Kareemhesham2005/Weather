@@ -42,6 +42,8 @@ body {
 }
 
 #info {
+  position: relative;
+  z-index: 400;
   background-color: #000000d0;
   color: white;
   padding: 30px;
